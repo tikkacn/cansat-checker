@@ -100,8 +100,8 @@ def homepage():
 	print(r.text)
 	print(reference)
 
-	differ = HtmlDiff()
-	html = differ.make_file(r.text, reference, context=False )
+	differ = Differ()
+	result = list(d.compare(r.text, reference))
 
 	return """
 	<h1>Hello heroku</h1>
@@ -109,7 +109,7 @@ def homepage():
 
 	<img src="http://loremflickr.com/600/400">
 
-	""".format(time=the_time)+html
+	""".format(time=the_time)+result
 
 if __name__ == '__main__':
 	app.run(debug=True, use_reloader=True)
