@@ -100,7 +100,7 @@ def homepage():
 	print(r.text)
 	print(reference)
 
-	differ = HtmlDiff( tabsize=4, wrapcolumn=40 )
+	differ = HtmlDiff()
 	html = differ.make_file(r.text, reference, context=False )
 
 	return """
