@@ -102,7 +102,7 @@ def homepage():
 
 	sitetext = r.text.strip("	 ").splitlines(1)
 
-	differ = HtmlDiff(tabsize=8)
+	differ = HtmlDiff(tabsize=8, wrapcolumn=80)
 	html = differ.make_file(sitetext, reference, context=False )
 
 	return """
