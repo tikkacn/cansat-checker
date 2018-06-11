@@ -96,11 +96,11 @@ def homepage():
   </script>
 </body>
 </html>
-""".strip(' ','	')
+""".strip([' ','	'])
 	print(r.text)
 	print(reference)
 
-	sitetext = r.text.strip(' ','	')
+	sitetext = r.text.strip([' ','	'])
 
 	differ = HtmlDiff(tabsize=8, wrapcolumn=80)
 	html = differ.make_file(sitetext, reference, context=False )
