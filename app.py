@@ -97,19 +97,21 @@ def homepage():
 </body>
 </html>
 """
-	print(r.text)
-	print(reference)
+	#print(r.text)
+	#print(reference)
 
 	differ = Differ()
 	result = list(differ.compare(r.text, reference))
 
-	return ("""
+	print(result)
+
+	return """
 	<h1>Hello heroku</h1>
 	<p>It is currently {time}.</p>
 
 	<img src="http://loremflickr.com/600/400">
 
-	""".format(time=the_time)).join(result)
+	""".format(time=the_time)
 
 if __name__ == '__main__':
 	app.run(debug=True, use_reloader=True)
