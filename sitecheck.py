@@ -19,10 +19,11 @@ r = requests.get('http://www.cansatcompetition.com/mission.html')
 updated = ('2019' in r.text)
 if(updated):
         print('yay')
+        sendmail()
 else:
         print('aww')
 
-sendmail()
+
 
 
 
