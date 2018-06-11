@@ -7,7 +7,7 @@ def sendmail():
 	server.starttls()
 	server.login("cansatstatuschecker@gmail.com", "cansat1234")
  
-	msg = "(Just a drill) CanSat has been Updated!"
+	msg = "NOT A DRILL! CanSat has been updated!"
 	for address in maillist:
 		server.sendmail("cansatstatuschecker@gmail.com", address, msg)
 	server.quit()
@@ -19,11 +19,11 @@ r = requests.get('http://www.cansatcompetition.com/mission.html')
 updated = ('2019' in r.text)
 if(updated):
         print('yay')
-        
+        sendmail()
 else:
         print('aww')
 
-sendmail()
+
 
 
 
