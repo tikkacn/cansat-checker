@@ -3,12 +3,8 @@ url = "https://pypi.python.org/simple"
 verify_ssl = true
 
 [packages]
-django = "*"
 gunicorn = "*"
-django-heroku = "*"
 requests = "*"
-"psycopg2-binary" = "*"
-"urllib3" = "*"
 flask = "*"
 
 [requires]
