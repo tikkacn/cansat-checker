@@ -8,6 +8,7 @@ gunicorn = "*"
 django-heroku = "*"
 requests = "*"
 "psycopg2-binary" = "*"
+"urllib3" = "*"
 
 [requires]
 python_version = "3.6"
