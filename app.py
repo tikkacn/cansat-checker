@@ -1,7 +1,7 @@
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gettingstarted.settings")
 import requests
-from urllib2 import Request, urlopen
+from urllib3 import Request, urlopen
 
 from django.core.wsgi import get_wsgi_application
 
