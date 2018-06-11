@@ -9,6 +9,7 @@ django-heroku = "*"
 requests = "*"
 "psycopg2-binary" = "*"
 "urllib3" = "*"
+flask = "*"
 
 [requires]
 python_version = "3.6"
