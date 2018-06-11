@@ -7,7 +7,7 @@ from .models import Greeting
 
 # Create your views here.
 def index(request):
-    r = requests.get('http://httpbin.org/status/418')
+    r = requests.get('http://www.cansatcompetition.com/mission.html')
     print(r.text)
     return HttpResponse('<pre>' + r.text + '</pre>')
 
