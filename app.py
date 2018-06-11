@@ -13,7 +13,7 @@ def homepage():
 
 	<img src="http://loremflickr.com/600/400">
 
-	""".format(time=the_time)+r.text
+	""".format(time=the_time)
 
 if __name__ == '__main__':
 	r = requests.get('http://www.cansatcompetition.com/mission.html')
