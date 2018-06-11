@@ -12,7 +12,7 @@ def sendmail():
 		server.sendmail("cansatstatuschecker@gmail.com", address, msg)
 	server.quit()
 
-maillist = ['trbinsc@gmail.com','jrd0023@uah.edu']
+maillist = ['trbinsc@gmail.com','jrd0027@uah.edu']
 
 r = requests.get('http://www.cansatcompetition.com/mission.html')
 
