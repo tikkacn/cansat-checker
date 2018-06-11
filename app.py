@@ -96,14 +96,14 @@ def homepage():
   </script>
 </body>
 </html>
-"""
-	#print(r.text)
-	#print(reference)
+""".strip(' ','	')
+	print(r.text)
+	print(reference)
 
-	differ = Differ()
-	result = list(differ.compare(r.text, reference))
+	sitetext = r.text.strip(' ','	')
 
-	print(result)
+	differ = HtmlDiff(tabsize=8, wrapcolumn=80)
+	html = differ.make_file(sitetext, reference, context=False )
 
 	return """
 	<h1>Hello heroku</h1>
@@ -111,7 +111,7 @@ def homepage():
 
 	<img src="http://loremflickr.com/600/400">
 
-	""".format(time=the_time)
+	""".format(time=the_time)+html
 
 if __name__ == '__main__':
 	app.run(debug=True, use_reloader=True)
