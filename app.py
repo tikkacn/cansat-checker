@@ -27,24 +27,24 @@ def homepage():
   <div id="main">
     <header>
       <div id="logo">
-        <div id="logo_text">
-          <!-- class="logo_colour", allows you to change the colour of the text -->
-          <h1><a href="index.html">CanSat Competition</a></h1>
-          <h2>Mission</h2>
-        </div>
+	<div id="logo_text">
+	  <!-- class="logo_colour", allows you to change the colour of the text -->
+	  <h1><a href="index.html">CanSat Competition</a></h1>
+	  <h2>Mission</h2>
+	</div>
       </div>
       <nav>
-        <div id="menu_container">
-          <ul class="sf-menu" id="nav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="mission.html">Mission</a></li>
-            <li><a href="teams.html">Teams</a></li>
+	<div id="menu_container">
+	  <ul class="sf-menu" id="nav">
+	    <li><a href="index.html">Home</a></li>
+	    <li><a href="mission.html">Mission</a></li>
+	    <li><a href="teams.html">Teams</a></li>
 	    <li><a href="winners.html">2017 Winners</a></li>
 	    <li><a href="photos.html">Photos</a></li>
 			<li><a href="documents.html">Documents</a></li>
-             <li><a href="mailto:cansatcompetition@gmail.com?subject=CanSat Competition">Contact Us</a></li>
-          </ul>
-        </div>
+	     <li><a href="mailto:cansatcompetition@gmail.com?subject=CanSat Competition">Contact Us</a></li>
+	  </ul>
+	</div>
       </nav>
     </header>
     <div id="site_content">
@@ -60,10 +60,10 @@ def homepage():
 			<h2><a href="docs/Cansat_environmental_tests_r1.3.pdf">Environmental Test Guide</a></h2>
 			<h2><a href="docs/mission_operations_manual_2016.doc">Mission Operations Manual</a></h2>
 			<h2><a href="docs/pfr_outline_2018.pdf">Post Flight Review Outline</a></h2>
-        </div>
+	</div>
       </div>
       <div class="content">
-        <h1>Introduction</h1>
+	<h1>Introduction</h1>
 <p>The 2018 mission simulates a space probe (CanSat) entering a planetary atmosphere. The probe shall carry a single large hen's egg. The egg must survive all portions of flight. The operation sequence shall be:
 <p>1. The probe is launched to an altitude of 670 meters to 725 meters and then deployed from the rocket. Orientation of deployment is not controlled and is most definitely violent.
 <p>2. Once deployed, the probe shall open an aero-braking heat shield. The descent rate shall be kept at 10 to 30 meters/sec. The aero-braking probe must maintain a stable orientation with the heat shield facing the direction of descent during descent. Tumbling is not allowed. Active control surfaces or other non pyrotechnic mechanisms can be used to maintain orientation.
@@ -100,7 +100,7 @@ def homepage():
 	print(reference)
 
 	differ = HtmlDiff( tabsize=4, wrapcolumn=40 )
-        html = differ.make_file(r.text, reference, context=False )
+	html = differ.make_file(r.text, reference, context=False )
 
 	return """
 	<h1>Hello heroku</h1>
