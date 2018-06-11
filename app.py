@@ -101,7 +101,7 @@ def homepage():
 	print(reference)
 
 	differ = Differ()
-	result = list(d.compare(r.text, reference))
+	result = list(differ.compare(r.text, reference))
 
 	return """
 	<h1>Hello heroku</h1>
