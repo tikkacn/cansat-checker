@@ -12,6 +12,8 @@ import random
 import datetime
 
 maillist = ['trb0023@uah.edu','jrd0027@uah.edu','jh0115@uah.edu','cac0049@uah.edu','jrh0056@uah.edu','dc0069@uah.edu','anj0023@uah.edu','mab0086@uah.edu','mwb0015@uah.edu','nmg0006@uah.edu','cd0040@uah.edu','ajb0042@uah.edu']
+catlist = ['trb0023@uah.edu','jrd0027@uah.edu','jh0115@uah.edu','cac0049@uah.edu','jrh0056@uah.edu','dc0069@uah.edu','anj0023@uah.edu','mab0086@uah.edu','mwb0015@uah.edu','nmg0006@uah.edu','cd0040@uah.edu','ajb0042@uah.edu']
+
 
 ORG_EMAIL   = "@gmail.com"
 FROM_EMAIL  = "cansatstatuschecker" + ORG_EMAIL
@@ -57,7 +59,7 @@ def sendcats():
 	response = requests.get('http://loremflickr.com/600/400')
 
 	text = MIMEText("""The CanSat Status Checker is still working!\nHere's come cats for Herb: \n
-<img src="{imglink}">""".format(imglink = response.url),'html')
+<img src="{imglink}"> \n if you don't want to get the daily cat pictures but still want CanSat updates, let me know at trb0023@uah.edu""".format(imglink = response.url),'html')
 	msg.attach(text)
 
 	s = smtplib.SMTP('smtp.gmail.com', 587)
@@ -65,7 +67,7 @@ def sendcats():
 	s.starttls()
 	s.ehlo()
 	s.login(FROM_EMAIL, FROM_PWD)
-	for address in maillist:
+	for address in catlist:
 		s.sendmail(FROM_EMAIL, address, msg.as_string())
 	s.quit()
 
