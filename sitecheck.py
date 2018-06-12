@@ -5,7 +5,7 @@ import imaplib
 import re
 import email
 
-maillist = ['trb0023@uah.edu','jrd0027@uah.edu','jh0115@uah.edu','cac0049@uah.edu','jrh0056@uah.edu','dc0069@uah.edu','anj0023@uah.edu','mab0086@uah.edu']
+maillist = ['trb0023@uah.edu','jrd0027@uah.edu','jh0115@uah.edu','cac0049@uah.edu','jrh0056@uah.edu','dc0069@uah.edu','anj0023@uah.edu','mab0086@uah.edu','mwb0015@uah.edu','nmg0006@uah.edu']
 
 ORG_EMAIL   = "@gmail.com"
 FROM_EMAIL  = "cansatstatuschecker" + ORG_EMAIL
