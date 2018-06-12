@@ -5,7 +5,7 @@ import imaplib
 import re
 import email
 
-maillist = ['trbinsc@gmail.com','jrd0027@uah.edu']
+maillist = ['trb0023@uah.edu','jrd0027@uah.edu','jh0115@uah.edu','cac0049@uah.edu','jrh0056@uah.edu','dc0069@uah.edu','anj0023@uah.edu','mab0086@uah.edu']
 
 ORG_EMAIL   = "@gmail.com"
 FROM_EMAIL  = "cansatstatuschecker" + ORG_EMAIL
@@ -18,7 +18,7 @@ def sendalert(challengetext = ""):
 	server.starttls()
 	server.login(FROM_EMAIL, FROM_PWD)
  
-	msg = "NOT A DRILL! CanSat has been updated! \n"+challengetext
+	msg = "THIS IS A DRILL! CanSat has been updated! \n"+challengetext
 	for address in maillist:
 		server.sendmail(FROM_EMAIL, address, msg)
 	server.quit()
@@ -81,7 +81,7 @@ except:
 	senderror()
 	lastpage = ''
 	
-if(excerpt != lastpage):
+if(excerpt+"1" != lastpage):
 	sendmail(excerpt)
 	sendalert(excerpt1)
 
