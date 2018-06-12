@@ -18,7 +18,7 @@ def sendalert(challengetext = ""):
 	server.starttls()
 	server.login(FROM_EMAIL, FROM_PWD)
  
-	msg = "THIS IS A DRILL! CanSat has been updated! \n"+challengetext
+	msg = "NOT A DRILL! CanSat has been updated! \n"+challengetext
 	for address in maillist:
 		server.sendmail(FROM_EMAIL, address, msg)
 	server.quit()
