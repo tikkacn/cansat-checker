@@ -23,6 +23,16 @@ def sendalert(challengetext = ""):
 		server.sendmail(FROM_EMAIL, address, msg)
 	server.quit()
 
+def senderror(challengetext = ""):
+	server = smtplib.SMTP('smtp.gmail.com', 587)
+	server.starttls()
+	server.login(FROM_EMAIL, FROM_PWD)
+ 
+	msg = "Cansat Checker Error \n"+challengetext
+	for address in maillist:
+		server.sendmail(FROM_EMAIL, address, msg)
+	server.quit()
+
 def sendmail(challengetext):
 	server = smtplib.SMTP('smtp.gmail.com', 587)
 	server.starttls()
@@ -54,15 +64,24 @@ def cleanhtml(raw_html):
 	cleantext = re.sub(cleanr, '', raw_html)
 	return cleantext
 
-lastpage = readmail().replace('\n', '').replace('\r', '').replace(': ',':')
 
-r = requests.get('http://www.cansatcompetition.com/mission.html')
+try:
+	r = requests.get('http://www.cansatcompetition.com/mission.html')
 
-excerpt1 = cleanhtml(r.text.partition("<h2>Documents</h2>")[2].partition('<div id="scroll">')[0])
-excerpt = excerpt1.strip()
-excerpt = excerpt.replace('\n', '').replace('\r', '').replace(': ',':')
+	excerpt1 = cleanhtml(r.text.partition("<h2>Documents</h2>")[2].partition('<div id="scroll">')[0])
+	excerpt = excerpt1.strip()
+	excerpt = excerpt.replace('\n', '').replace('\r', '').replace(': ',':')
+	print(excerpt)
+	print('\n')
 
-if(excerpt != lastpage):
+	lastpage = readmail().replace('\n', '').replace('\r', '').replace(': ',':')
+	print(lastpage)
+
+except:
+	senderror()
+	lastpage = ''
+	
+if(excerpt+"1" != lastpage):
 	sendmail(excerpt)
 	sendalert(excerpt1)
 
