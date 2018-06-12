@@ -97,8 +97,8 @@ def cleanhtml(raw_html):
 	cleantext = re.sub(cleanr, '', raw_html)
 	return cleantext
 
+print(str(datetime.datetime.now().hour)+':'+str(datetime.datetime.now().minute))
 if(datetime.datetime.now().hour == 14 and datetime.datetime.now().minute < 10):
-	print(str(datetime.datetime.now().hour)+':'+str(datetime.datetime.now().minute))
 	print('sending cats')
 	sendcats()
 
