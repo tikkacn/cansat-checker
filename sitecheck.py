@@ -66,7 +66,7 @@ def sendcats():
 	s.ehlo()
 	s.login(FROM_EMAIL, FROM_PWD)
 	for address in maillist:
-		server.sendmail(FROM_EMAIL, address, msg.as_string())
+		s.sendmail(FROM_EMAIL, address, msg.as_string())
 	s.quit()
 
 def readmail():
@@ -98,6 +98,8 @@ def cleanhtml(raw_html):
 	return cleantext
 
 if(datetime.datetime.now().hour == 14 and datetime.datetime.now().minute < 10):
+	print(str(datetime.datetime.now().hour)+':'+str(datetime.datetime.now().minute))
+	print('sending cats')
 	sendcats()
 
 try:
