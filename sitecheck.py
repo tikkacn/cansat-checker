@@ -81,7 +81,7 @@ except:
 	senderror()
 	lastpage = ''
 	
-if(excerpt+"1" != lastpage):
+if(excerpt != lastpage):
 	sendmail(excerpt)
 	sendalert(excerpt1)
 
