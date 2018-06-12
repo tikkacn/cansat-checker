@@ -1,11 +1,17 @@
+import os
 import requests
 import html
 import smtplib
 import imaplib
 import re
 import email
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+import random
+import datetime
 
-maillist = ['trb0023@uah.edu','jrd0027@uah.edu','jh0115@uah.edu','cac0049@uah.edu','jrh0056@uah.edu','dc0069@uah.edu','anj0023@uah.edu','mab0086@uah.edu','mwb0015@uah.edu','nmg0006@uah.edu']
+maillist = ['trb0023@uah.edu','jrd0027@uah.edu','jh0115@uah.edu','cac0049@uah.edu','jrh0056@uah.edu','dc0069@uah.edu','anj0023@uah.edu','mab0086@uah.edu','mwb0015@uah.edu','nmg0006@uah.edu','cd0040@uah.edu']
 
 ORG_EMAIL   = "@gmail.com"
 FROM_EMAIL  = "cansatstatuschecker" + ORG_EMAIL
@@ -42,6 +48,27 @@ def sendmail(challengetext):
 	server.sendmail(FROM_EMAIL, FROM_EMAIL, msg)
 	server.quit()
 
+def sendcats():
+	msg = MIMEMultipart()
+	msg['Subject'] = 'Herb\'s Cat Picture #'+str(random.randint(1000,9999))
+	msg['From'] = FROM_EMAIL
+	msg['To'] = 'trb0023@uah.edu'
+
+	response = requests.get('http://loremflickr.com/600/400')
+
+	text = MIMEText("""The CanSat Status Checker is still working!\nHere's come cats for Herb: \n
+<img src="{imglink}">""".format(imglink = response.url),'html')
+	msg.attach(text)
+
+	s = smtplib.SMTP('smtp.gmail.com', 587)
+	s.ehlo()
+	s.starttls()
+	s.ehlo()
+	s.login(FROM_EMAIL, FROM_PWD)
+	for address in maillist:
+		server.sendmail(FROM_EMAIL, address, msg.as_string())
+	s.quit()
+
 def readmail():
 	mail = imaplib.IMAP4_SSL(SMTP_SERVER)
 	mail.login(FROM_EMAIL,FROM_PWD)
@@ -58,8 +85,8 @@ def readmail():
 			mail.close()
 			if isinstance(msg.get_payload(), str):
 				return (msg.get_payload())
-			elif(isinstance(msg.get_payload()[0], str)):
-				return (msg.get_payload()[0])
+			elif(isinstance(str(msg.get_payload()), str)):
+				return str(msg.get_payload())
 			else:
 				return('recieve error: does not contain a string')
 				
@@ -70,6 +97,8 @@ def cleanhtml(raw_html):
 	cleantext = re.sub(cleanr, '', raw_html)
 	return cleantext
 
+if(datetime.datetime.now().hour == 14 and datetime.datetime.now().minute < 10):
+	sendcats()
 
 try:
 	r = requests.get('http://www.cansatcompetition.com/mission.html')

@@ -6,7 +6,9 @@ verify_ssl = true
 gunicorn = "*"
 requests = "*"
 flask = "*"
-difflib = "*" 
+"urllib3" = "*"
+image = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.6"
