@@ -13,12 +13,12 @@ FROM_PWD    = "cansat1234"
 SMTP_SERVER = "imap.gmail.com"
 SMTP_PORT   = 993
 
-def sendalert(challengetext = ""):
+def sendalert(challengetext = "", oldtext = ""):
 	server = smtplib.SMTP('smtp.gmail.com', 587)
 	server.starttls()
 	server.login(FROM_EMAIL, FROM_PWD)
  
-	msg = "TEST TEST TEST CanSat has been updated! \n"+challengetext
+	msg = "CanSat has been updated! This is not a drill! \nnew: "+challengetext+"\nold: "+oldtext
 	for address in maillist:
 		server.sendmail(FROM_EMAIL, address, msg)
 	server.quit()
@@ -56,7 +56,13 @@ def readmail():
 		if isinstance(response_part, tuple):
 			msg = email.message_from_string(response_part[1].decode('utf-8'))
 			mail.close()
-			return (msg.get_payload())
+			if isinstance(msg.get_payload(), str):
+				return (msg.get_payload())
+			elif(isinstance(msg.get_payload()[0], str)):
+				return (msg.get_payload()[0])
+			else:
+				return('recieve error: does not contain a string')
+				
 			
 
 def cleanhtml(raw_html):
@@ -83,6 +89,6 @@ except:
 	
 if(excerpt != lastpage):
 	sendmail(excerpt)
-	sendalert(excerpt1)
+	sendalert(excerpt1,lastpage)
 
 
