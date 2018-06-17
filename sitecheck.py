@@ -37,8 +37,7 @@ def senderror(challengetext = ""):
 	server.login(FROM_EMAIL, FROM_PWD)
  
 	msg = "Cansat Checker Error \n"+challengetext
-	for address in maillist:
-		server.sendmail(FROM_EMAIL, address, msg)
+	server.sendmail(FROM_EMAIL, "trb0023@uah.edu", msg)
 	server.quit()
 
 def sendmail(challengetext):
@@ -54,11 +53,11 @@ def sendcats():
 	msg = MIMEMultipart()
 	msg['Subject'] = 'Herb\'s Cat Picture #'+str(random.randint(1000,9999))
 	msg['From'] = FROM_EMAIL
-	msg['To'] = 'trb0023@uah.edu'
+	msg['To'] = ', '.join(catlist)
 
 	response = requests.get('http://loremflickr.com/600/400')
 
-	text = MIMEText("""The CanSat Status Checker is still working!\nHere's come cats for Herb: \n
+	text = MIMEText("""The CanSat Status Checker is still working! Now with less false alarms when people email this address! (Looking at you Herb)\n\nHere's come cats for Herb: \n
 <img src="{imglink}"> \n if you don't want to get the daily cat pictures but still want CanSat updates, let me know at trb0023@uah.edu""".format(imglink = response.url),'html')
 	msg.attach(text)
 
@@ -87,10 +86,8 @@ def readmail():
 			mail.close()
 			if isinstance(msg.get_payload(), str):
 				return (msg.get_payload())
-			elif(isinstance(str(msg.get_payload()), str)):
-				return str(msg.get_payload())
 			else:
-				return('recieve error: does not contain a string')
+				return('recieve error, does not contain a string')
 				
 			
 
@@ -99,10 +96,11 @@ def cleanhtml(raw_html):
 	cleantext = re.sub(cleanr, '', raw_html)
 	return cleantext
 
+
 print(str(datetime.datetime.now().hour)+':'+str(datetime.datetime.now().minute))
 if(datetime.datetime.now().hour == 17 and datetime.datetime.now().minute < 10):
 	print('sending cats')
-	sendcats()
+sendcats()
 
 try:
 	r = requests.get('http://www.cansatcompetition.com/mission.html')
@@ -119,8 +117,10 @@ try:
 except:
 	senderror()
 	lastpage = ''
-	
-if(excerpt != lastpage):
+
+if(lastpage == 'recieve error, does not contain a string'):
+        senderror()
+elif(excerpt != lastpage):
 	sendmail(excerpt)
 	sendalert(excerpt1,lastpage)
 
