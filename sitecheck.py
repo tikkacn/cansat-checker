@@ -100,7 +100,7 @@ def cleanhtml(raw_html):
 print(str(datetime.datetime.now().hour)+':'+str(datetime.datetime.now().minute))
 if(datetime.datetime.now().hour == 17 and datetime.datetime.now().minute < 10):
 	print('sending cats')
-        sendcats()
+	sendcats()
 
 try:
 	r = requests.get('http://www.cansatcompetition.com/mission.html')
