@@ -119,7 +119,8 @@ except:
 	lastpage = ''
 
 if(lastpage == 'recieve error, does not contain a string'):
-        senderror()
+	senderror()
+	sendmail(excerpt)
 elif(excerpt != lastpage):
 	sendmail(excerpt)
 	sendalert(excerpt1,lastpage)
