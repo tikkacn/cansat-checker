@@ -57,7 +57,7 @@ def sendcats():
 
 	response = requests.get('http://loremflickr.com/600/400')
 
-	text = MIMEText("""The CanSat Status Checker is still working! Now with less false alarms when people email this address! (Looking at you Herb)\n\nHere's come cats for Herb: \n
+	text = MIMEText("""The CanSat Status Checker is still working! Now with less false alarms when people email this address! (Looking at you Herb)\n\nHere's some cats for Herb: \n
 <img src="{imglink}"> \n if you don't want to get the daily cat pictures but still want CanSat updates, let me know at trb0023@uah.edu""".format(imglink = response.url),'html')
 	msg.attach(text)
 
