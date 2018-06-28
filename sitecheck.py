@@ -11,8 +11,8 @@ from email.mime.multipart import MIMEMultipart
 import random
 import datetime
 
-maillist = ['trb0023@uah.edu','jrd0027@uah.edu','jh0115@uah.edu','cac0049@uah.edu','jrh0056@uah.edu','dc0069@uah.edu','anj0023@uah.edu','mab0086@uah.edu','mwb0015@uah.edu','nmg0006@uah.edu','cd0040@uah.edu','ajb0042@uah.edu']
-catlist = ['trb0023@uah.edu','jrd0027@uah.edu','jh0115@uah.edu','cac0049@uah.edu','jrh0056@uah.edu','dc0069@uah.edu','anj0023@uah.edu','mab0086@uah.edu','mwb0015@uah.edu','nmg0006@uah.edu','cd0040@uah.edu','ajb0042@uah.edu']
+maillist = ['trb0023@uah.edu','jrd0027@uah.edu','jh0115@uah.edu','cac0049@uah.edu','jrh0056@uah.edu','dc0069@uah.edu','anj0023@uah.edu','mab0086@uah.edu','mwb0015@uah.edu','nmg0006@uah.edu','cd0040@uah.edu','ajb0042@uah.edu','fj0009@uah.edu']
+catlist = ['trb0023@uah.edu','jrd0027@uah.edu','jh0115@uah.edu','cac0049@uah.edu','jrh0056@uah.edu','dc0069@uah.edu','anj0023@uah.edu','mab0086@uah.edu','mwb0015@uah.edu','nmg0006@uah.edu','cd0040@uah.edu','ajb0042@uah.edu','fj0009@uah.edu']
 
 
 ORG_EMAIL   = "@gmail.com"
