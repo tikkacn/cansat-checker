@@ -11,13 +11,14 @@ from email.mime.multipart import MIMEMultipart
 import random
 import datetime
 
+
 maillist = ['trb0023@uah.edu','jrd0027@uah.edu','jh0115@uah.edu','cac0049@uah.edu','jrh0056@uah.edu','dc0069@uah.edu','anj0023@uah.edu','mab0086@uah.edu','mwb0015@uah.edu','nmg0006@uah.edu','cd0040@uah.edu','ajb0042@uah.edu','fj0009@uah.edu']
 catlist = ['trb0023@uah.edu','jrd0027@uah.edu','jh0115@uah.edu','cac0049@uah.edu','jrh0056@uah.edu','dc0069@uah.edu','anj0023@uah.edu','mab0086@uah.edu','nmg0006@uah.edu','cd0040@uah.edu','ajb0042@uah.edu','fj0009@uah.edu']
 
 
 ORG_EMAIL   = "@gmail.com"
 FROM_EMAIL  = "cansatstatuschecker" + ORG_EMAIL
-FROM_PWD    = "cansat1234"
+FROM_PWD = os.environ['EMAIL_PWD']
 SMTP_SERVER = "imap.gmail.com"
 SMTP_PORT   = 993
 
@@ -96,7 +97,7 @@ def cleanhtml(raw_html):
 	cleantext = re.sub(cleanr, '', raw_html)
 	return cleantext
 
-
+senderror()
 print(str(datetime.datetime.now().hour)+':'+str(datetime.datetime.now().minute))
 if(datetime.datetime.now().hour == 17 and datetime.datetime.now().minute < 10):
 	print('sending cats')
